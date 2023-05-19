@@ -160,7 +160,7 @@ input[type="range"]:focus::-moz-range-thumb {
     }
 
     .bars {
-        gap: 25%;
+        gap: 15%;
     }
 
     .noofbars input,

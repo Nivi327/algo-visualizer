@@ -5,12 +5,13 @@ import { BubbleSortAlgo } from "./SortingMethods/BubbleSort";
 import { InsertionSortAlgo } from "./SortingMethods/InsertionSort";
 import { selectionSortAlgo } from "./SortingMethods/SelectionSort";
 import Complexities from './SortingMethods/TimeComplexities.json';
+import BubbleSortCode from "./SortingMethods/Codes/BubbleSortCode";
 
 const SortingVisualizer = () => {
     const [newArray, setNewArray] = useState([]);
     const [noOfBars, setNoOfBars] = useState(52);
     const [barSpeed, setBarSpeed] = useState(10);
-    const [complexity, setComplexity] = useState({SortAlgo:"Merge Sort", Best: "N*logN", Average: "N*logN", Worst: "N*logN", Space: "N" });
+    const [complexity, setComplexity] = useState({ SortAlgo: "Merge Sort", Best: "N*logN", Average: "N*logN", Worst: "N*logN", Space: "N" });
 
     const randomInt = (a, b) => {
         return Math.floor(Math.random() * (a - b + 1) + b)
@@ -29,10 +30,9 @@ const SortingVisualizer = () => {
         const arrayBars = document.getElementsByClassName('div-bar');
         for (let i = 0; i < noOfBars; i++) {
             arr.push(randomInt(5, 600));
-            if (arrayBars.length > i) {
-                const barStyle = arrayBars[i].style;
-                barStyle.backgroundColor = 'rgba(0, 157, 255, 0.8)';
-            }
+            if(arrayBars.length > i) {
+                arrayBars[i].style.backgroundColor = 'rgba(0, 157, 255, 0.8)';
+            } 
         }
         setNewArray(arr);
     }
@@ -65,8 +65,8 @@ const SortingVisualizer = () => {
                 }, i * barSpeed);
             }
         }
-        const {Best, Average, Worst, Space} = Complexities.MergeSort;
-        setComplexity(prevValues => {return {SortAlgo: "Merge Sort", Best, Average, Worst, Space}})
+        const { Best, Average, Worst, Space } = Complexities.MergeSort;
+        setComplexity(prevValues => { return { SortAlgo: "Merge Sort", Best, Average, Worst, Space } })
     }
 
     const BubbleSort = () => {
@@ -94,8 +94,8 @@ const SortingVisualizer = () => {
                 }, i * barSpeed);
             }
         }
-        const {Best, Average, Worst, Space} = Complexities.BubbleSort;
-        setComplexity(prevValues => {return {SortAlgo: "Bubble Sort", Best, Average, Worst, Space}})
+        const { Best, Average, Worst, Space } = Complexities.BubbleSort;
+        setComplexity(prevValues => { return { SortAlgo: "Bubble Sort", Best, Average, Worst, Space } })
     }
 
     const InsertionSort = () => {
@@ -120,8 +120,8 @@ const SortingVisualizer = () => {
                 }, i * barSpeed);
             }
         }
-        const {Best, Average, Worst, Space} = Complexities.InsertionSort;
-        setComplexity(prevValues => {return {SortAlgo: "Insertion Sort", Best, Average, Worst, Space}})
+        const { Best, Average, Worst, Space } = Complexities.InsertionSort;
+        setComplexity(prevValues => { return { SortAlgo: "Insertion Sort", Best, Average, Worst, Space } })
     }
 
     const SelectionSort = () => {
@@ -154,8 +154,8 @@ const SortingVisualizer = () => {
                 }
             }
         }
-        const {Best, Average, Worst, Space} = Complexities.SelectionSort;
-        setComplexity(prevValues => {return {SortAlgo: "Selection Sort", Best, Average, Worst, Space}})
+        const { Best, Average, Worst, Space } = Complexities.SelectionSort;
+        setComplexity(prevValues => { return { SortAlgo: "Selection Sort", Best, Average, Worst, Space } })
     }
 
     return (<>
@@ -181,25 +181,30 @@ const SortingVisualizer = () => {
                 return <div key={idx} className="div-bar" id={idx + 1} style={{ height: `${val}px` }}></div>
             })}
         </div>
+        <div className="algo-code">
+            <BubbleSortCode />
+        </div>
         <div className="div-table">
             <h2>{complexity.SortAlgo} Algorithm Complexity</h2>
             <table className="table">
-                <tr>
-                    <th>Best Case</th>
-                    <td>O({complexity.Best})</td>
-                </tr>
-                <tr>
-                    <th>Average Case</th>
-                    <td>O({complexity.Average})</td>
-                </tr>
-                <tr>
-                    <th>Worst Case</th>
-                    <td>O({complexity.Worst})</td>
-                </tr>
-                <tr>
-                    <th>Space</th>
-                    <td>O({complexity.Space})</td>
-                </tr>
+                <tbody>
+                    <tr>
+                        <th>Best Case</th>
+                        <td>O({complexity.Best})</td>
+                    </tr>
+                    <tr>
+                        <th>Average Case</th>
+                        <td>O({complexity.Average})</td>
+                    </tr>
+                    <tr>
+                        <th>Worst Case</th>
+                        <td>O({complexity.Worst})</td>
+                    </tr>
+                    <tr>
+                        <th>Space</th>
+                        <td>O({complexity.Space})</td>
+                    </tr>
+                </tbody>
             </table>
         </div>
     </>

@@ -1,13 +1,15 @@
 export function getMergeSort(array) {
     const tempArr = new Array();
+    const mainArray = new Array();
     for(let i=0; i < array.length; i++){
         tempArr.push(array[i]);
+        mainArray.push(array[i]);
     }
     if( tempArr.length <= 1){
         return tempArr;
     }
     const animations = [];
-    mergesort(array, tempArr, animations, 0, tempArr.length-1);
+    mergesort(mainArray, tempArr, animations, 0, tempArr.length-1);
     return animations;
 }
 
