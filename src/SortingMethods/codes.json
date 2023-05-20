@@ -39,9 +39,9 @@
         {"code":"j += 1","indent": 2},
         {"code":"k += 1", "indent": 2},
         {"code":"", "indent": 1},
+        {"code":"", "indent": 1},
 
-        {"code":"n = len(arr)", "indent": 0},
-        {"code":"tempArr = arr.cory()", "indent": 0},
+        {"code":"tempArr = arr.copy()", "indent": 0},
         {"code":"def Merge(array, tempArr, start, end):", "indent": 0},
         {"code":"if start == end:", "indent": 1},
         {"code":"return", "indent": 2},

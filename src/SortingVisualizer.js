@@ -5,7 +5,7 @@ import { BubbleSortAlgo } from "./SortingMethods/BubbleSort";
 import { InsertionSortAlgo } from "./SortingMethods/InsertionSort";
 import { selectionSortAlgo } from "./SortingMethods/SelectionSort";
 import Complexities from './SortingMethods/TimeComplexities.json';
-import BubbleSortCode from "./SortingMethods/Codes/BubbleSortCode";
+import BubbleSortCode from "./SortingMethods/Codes/Code";
 
 const FREQ_MAX = 600;
 const FREQ_MIN = 200;

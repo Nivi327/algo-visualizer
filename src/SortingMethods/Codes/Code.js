@@ -1,6 +1,6 @@
 import './Code.css';
 
-import Codes from './../codes.json';
+import Codes from '../codes.json';
 
 const BubbleSortCode = ({code, name}) => {
     const lines = Codes[code];
