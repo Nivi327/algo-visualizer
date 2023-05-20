@@ -41,7 +41,7 @@
         {"code":"", "indent": 1},
         {"code":"", "indent": 1},
 
-        {"code":"tempArr = arr.copy()", "indent": 0},
+        {"code":"tempArr = array.copy()", "indent": 0},
         {"code":"def Merge(array, tempArr, start, end):", "indent": 0},
         {"code":"if start == end:", "indent": 1},
         {"code":"return", "indent": 2},
