@@ -7,32 +7,63 @@ import { selectionSortAlgo } from "./SortingMethods/SelectionSort";
 import Complexities from './SortingMethods/TimeComplexities.json';
 import BubbleSortCode from "./SortingMethods/Codes/BubbleSortCode";
 
+const FREQ_MAX =  600;
+const FREQ_MIN = 200;
+const DURATION = 50;
+
 const SortingVisualizer = () => {
     const [newArray, setNewArray] = useState([]);
     const [noOfBars, setNoOfBars] = useState(52);
     const [barSpeed, setBarSpeed] = useState(10);
+    const [code, setCode] = useState("MergeSort");
+    const [Name, setName] = useState("Merge Sort");
     const [complexity, setComplexity] = useState({ SortAlgo: "Merge Sort", Best: "N*logN", Average: "N*logN", Worst: "N*logN", Space: "N" });
 
     const randomInt = (a, b) => {
         return Math.floor(Math.random() * (a - b + 1) + b)
     }
 
+    const calcFrequency = (i) => {
+        return i / (100*barSpeed) * (FREQ_MAX - FREQ_MIN) + FREQ_MIN;
+    }
+
     const changeSpeed = (e) => {
-        setBarSpeed(150 - (+e.target.value))
+        setBarSpeed(120 - (+e.target.value))
     }
 
     const changeBars = (e) => {
         setNoOfBars(e.target.value);
     }
 
+    let audioCtx = null;
+
+    const playAudio = (freq, duration) => {
+        if (audioCtx == null) {
+            audioCtx = new (AudioContext ||
+                window.webkitAudioContext
+            )();
+        }
+        const oscillator = new OscillatorNode(audioCtx);
+        const gainNode = new GainNode(audioCtx);
+        oscillator.type = "square";
+        oscillator.frequency.value = freq;
+        gainNode.gain.value = 0.008;
+        oscillator.connect(gainNode).connect(audioCtx.destination);
+        oscillator.start()
+
+        setTimeout(() => {
+            oscillator.stop();
+        }, duration);
+    };
+
     const resetArray = () => {
         let arr = [];
         const arrayBars = document.getElementsByClassName('div-bar');
         for (let i = 0; i < noOfBars; i++) {
             arr.push(randomInt(5, 600));
-            if(arrayBars.length > i) {
+            if (arrayBars.length > i) {
                 arrayBars[i].style.backgroundColor = 'rgba(0, 157, 255, 0.8)';
-            } 
+            }
         }
         setNewArray(arr);
     }
@@ -41,10 +72,10 @@ const SortingVisualizer = () => {
         resetArray();
     }, [noOfBars]);
 
-    let content = "";
-
     const mergeSort = () => {
         const animations = getMergeSort(newArray);
+        setCode("MergeSort");
+        setName("Merge Sort");
         for (let i = 0; i < animations.length; i++) {
             const isColorChange = i % 3 !== 2
             const arrayBars = document.getElementsByClassName('div-bar');
@@ -56,12 +87,14 @@ const SortingVisualizer = () => {
                 setTimeout(() => {
                     barOneStyle.backgroundColor = color;
                     barTwoStyle.backgroundColor = color;
+                    playAudio(calcFrequency(i), DURATION);
                 }, i * barSpeed);
             } else {
                 const [barIdx, newHeight] = animations[i];
                 const barStyle = arrayBars[barIdx].style;
                 setTimeout(() => {
                     barStyle.height = `${newHeight}px`;
+                    playAudio(calcFrequency(i), DURATION);
                 }, i * barSpeed);
             }
         }
@@ -71,6 +104,8 @@ const SortingVisualizer = () => {
 
     const BubbleSort = () => {
         const [animations, random] = BubbleSortAlgo(newArray);
+        setCode("BubbleSort");
+        setName("Bubble Sort");
         for (let i = 0; i < animations.length; i++) {
             const isColorChange = (i % 4 === 0) || (i % 4 === 1)
             const arrayBars = document.getElementsByClassName('div-bar');
@@ -82,6 +117,12 @@ const SortingVisualizer = () => {
                 setTimeout(() => {
                     barOneStyle.backgroundColor = color;
                     barTwoStyle.backgroundColor = color;
+                    if (i < Math.floor(animations.length/2)) {
+                        playAudio(calcFrequency(i), DURATION);
+                    }
+                    else {
+                        playAudio(calcFrequency(animations.length-i), DURATION);
+                    }
                 }, i * barSpeed);
             } else {
                 const [barIdx, newHeight] = animations[i];
@@ -91,6 +132,12 @@ const SortingVisualizer = () => {
                 const barStyle = arrayBars[barIdx].style;
                 setTimeout(() => {
                     barStyle.height = `${newHeight}px`;
+                    if (i < Math.floor(animations.length/2)) {
+                        playAudio(calcFrequency(i), DURATION);
+                    }
+                    else {
+                        playAudio(calcFrequency(animations.length-i), DURATION);
+                    }
                 }, i * barSpeed);
             }
         }
@@ -100,6 +147,8 @@ const SortingVisualizer = () => {
 
     const InsertionSort = () => {
         const animations = InsertionSortAlgo(newArray);
+        setCode("InsertionSort");
+        setName("Insertion Sort");
         for (let i = 0; i < animations.length; i++) {
             const isColorChange = animations[i][0] === "comparision1" || animations[i][0] === "comparision2"
             const arrayBars = document.getElementsByClassName('div-bar');
@@ -111,12 +160,14 @@ const SortingVisualizer = () => {
                 setTimeout(() => {
                     barOneStyle.backgroundColor = color;
                     barTwoStyle.backgroundColor = color;
+                    playAudio(calcFrequency(i), DURATION);
                 }, i * barSpeed);
             } else {
                 const [s, barIdx, newHeight] = animations[i];
                 const barStyle = arrayBars[barIdx].style;
                 setTimeout(() => {
                     barStyle.height = `${newHeight}px`;
+                    playAudio(calcFrequency(i), DURATION);
                 }, i * barSpeed);
             }
         }
@@ -126,6 +177,8 @@ const SortingVisualizer = () => {
 
     const SelectionSort = () => {
         const animations = selectionSortAlgo(newArray);
+        setCode("SelectionSort");
+        setName("Selection Sort");
         for (let i = 0; i < animations.length; i++) {
             const isColorChange = animations[i][0] === "comparision1" || animations[i][0] === "comparision2";
             const arrayBars = document.getElementsByClassName("div-bar");
@@ -137,6 +190,7 @@ const SortingVisualizer = () => {
                 setTimeout(() => {
                     barOneStyle.backgroundColor = color;
                     barTwoStyle.backgroundColor = color;
+                    playAudio(calcFrequency(i), DURATION);
                 }, i * barSpeed);
             } else {
                 if (animations[i][0] === "index_change") {
@@ -144,6 +198,7 @@ const SortingVisualizer = () => {
                     const barTwoStyle = arrayBars[barTwoIdx].style;
                     setTimeout(() => {
                         barTwoStyle.color = 'black';
+                        playAudio(calcFrequency(i), DURATION);
                     }, i * barSpeed);
                 } else {
                     const [s, barIdx, newHeight] = animations[i];
@@ -173,7 +228,7 @@ const SortingVisualizer = () => {
             </div>
             <div className="barspeed">
                 <label htmlFor="noofbars">Play Speed</label>
-                <input type="range" name="noofbars" min="0" max="150" step="10" defaultValue="10" onChange={changeSpeed} />
+                <input type="range" name="noofbars" min="0" max="120" step="10" defaultValue="10" onChange={changeSpeed} />
             </div>
         </div>
         <div className="div-container">
@@ -182,7 +237,7 @@ const SortingVisualizer = () => {
             })}
         </div>
         <div className="algo-code">
-            <BubbleSortCode />
+            <BubbleSortCode code={code} name={Name}/>
         </div>
         <div className="div-table">
             <h2>{complexity.SortAlgo} Algorithm Complexity</h2>
