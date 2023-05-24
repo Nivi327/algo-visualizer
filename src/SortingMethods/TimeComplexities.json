@@ -22,5 +22,17 @@
         "Average": "N*N",
         "Worst": "N*N",
         "Space": "1"
+    },
+    "LinearSearch": {
+        "Best": "1",
+        "Average": "N",
+        "Worst": "N",
+        "Space": "1"
+    },
+    "BinarySearch": {
+        "Best": "1",
+        "Average": "log N(base 2)",
+        "Worst": "log N(base 2)",
+        "Space": "1"
     }
 }

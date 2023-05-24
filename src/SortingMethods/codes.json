@@ -58,5 +58,36 @@
         {"code":"if arr[i] < arr[min_idx]:", "indent": 2},
         {"code":"min_idx = i", "indent": 3},
         {"code":"array[step], array[min_idx] = array[min_idx], array[step]", "indent": 1}
+    ], "LinearSearch": [
+        {"code":"n = len(arr)", "indent": 0},
+        {"code":"key = 40", "indent": 0},
+        {"code":"flag = 0", "indent": 0},
+        {"code":"for i in range(n):", "indent": 0},
+        {"code":"if key == arr[i]:", "indent": 1},
+        {"code":"flag = 1", "indent": 2},
+        {"code":"print('Element Found')", "indent": 2},
+        {"code":"break", "indent": 2},
+        {"code":"if flag == 0:", "indent": 0},
+        {"code":"print('Element Not Found')", "indent": 1}
+    ], "BinarySearch": [
+        {"code":"# Array should be sorted", "indent": 0},
+        {"code":"# to perform binary search", "indent": 0},
+        {"code":"n = len(arr)", "indent": 0},
+        {"code":"key = 40", "indent": 0},
+        {"code":"flag = 0", "indent": 0},
+        {"code":"low = 0", "indent": 0},
+        {"code":"high = n - 1", "indent": 0},
+        {"code":"while low <= high:", "indent": 0},
+        {"code":"mid = (low+high)//2", "indent": 1},
+        {"code":"if arr[mid] < key:", "indent": 1},
+        {"code":"low = mid + 1", "indent": 2},
+        {"code":"elif arr[mid] > key:", "indent": 1},
+        {"code":"high = mid - 1", "indent": 2},
+        {"code":"elif arr[mid] == key:", "indent": 1},
+        {"code":"flag = 1", "indent": 2},
+        {"code":"print('Element Found')", "indent": 2},
+        {"code":"break", "indent": 2},
+        {"code":"if flag == 0:", "indent": 0},
+        {"code":"print('Element Not Found')", "indent": 1}
     ]
 }

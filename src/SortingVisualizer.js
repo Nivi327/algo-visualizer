@@ -9,12 +9,22 @@ import BubbleSortCode from "./SortingMethods/Codes/Code";
 
 const FREQ_MAX = 600;
 const FREQ_MIN = 200;
-const DURATION = 50;
+const DURATION = 1;
+const MIN_BARS = 5;
+const DEFAULT_BARS = 20;
+const MAX_BARS = 40;
+const MIN_SPEED = -100;
+const MAX_SPEED = 50;
+const MIN_RANGE = 5;
+const MAX_RANGE = 400;
 
-const SortingVisualizer = () => {
+const PRIMARY_COLOR = 'red';
+const SECONDARY_COLOR = 'rgba(0, 157, 255, 0.8)';
+
+const SortingVisualizer = ({showCode}) => {
     const [newArray, setNewArray] = useState([]);
-    const [noOfBars, setNoOfBars] = useState(52);
-    const [barSpeed, setBarSpeed] = useState(10);
+    const [noOfBars, setNoOfBars] = useState(DEFAULT_BARS);
+    const [barSpeed, setBarSpeed] = useState(100);
     const [sound, setSound] = useState(true);
     const [code, setCode] = useState("MergeSort");
     const [Name, setName] = useState("Merge Sort");
@@ -29,7 +39,7 @@ const SortingVisualizer = () => {
     }
 
     const changeSpeed = (e) => {
-        setBarSpeed(120 - (+e.target.value))
+        setBarSpeed(MAX_SPEED - (+e.target.value))
     }
 
     const changeBars = (e) => {
@@ -38,6 +48,14 @@ const SortingVisualizer = () => {
 
     const SoundToggle = () => {
         setSound(snd => !snd);
+    }
+
+    const sleep = (milliseconds) => {
+        const date = Date.now();
+        let currentDate = null;
+        do {
+            currentDate = Date.now();
+        } while (currentDate - date < milliseconds);
     }
 
     let audioCtx = null;
@@ -58,16 +76,16 @@ const SortingVisualizer = () => {
 
         setTimeout(() => {
             oscillator.stop();
-        }, duration);
+        }, 10*duration);
     };
 
     const resetArray = () => {
         let arr = [];
         const arrayBars = document.getElementsByClassName('div-bar');
         for (let i = 0; i < noOfBars; i++) {
-            arr.push(randomInt(5, 600));
+            arr.push(randomInt(MIN_RANGE, MAX_RANGE));
             if (arrayBars.length > i) {
-                arrayBars[i].style.backgroundColor = 'rgba(0, 157, 255, 0.8)';
+                arrayBars[i].style.backgroundColor = SECONDARY_COLOR;
             }
         }
         setNewArray(arr);
@@ -85,22 +103,23 @@ const SortingVisualizer = () => {
             const isColorChange = i % 3 !== 2
             const arrayBars = document.getElementsByClassName('div-bar');
             if (isColorChange === true) {
-                const color = (i % 3 === 0) ? 'red' : 'turquoise';
+                const color = (i % 3) === 0 ? PRIMARY_COLOR : SECONDARY_COLOR;
                 const [barOneIdx, barTwoIdx] = animations[i];
-                const barOneStyle = arrayBars[barOneIdx].style;
-                const barTwoStyle = arrayBars[barTwoIdx].style;
+                const barOneStyle = arrayBars[barOneIdx];
+                const barTwoStyle = arrayBars[barTwoIdx];
                 setTimeout(() => {
-                    barOneStyle.backgroundColor = color;
-                    barTwoStyle.backgroundColor = color;
+                    barOneStyle.style.background = color;
+                    barTwoStyle.style.background = color;
                     if (sound) {
                         playAudio(calcFrequency(i), DURATION);
                     }
                 }, i * barSpeed);
             } else {
                 const [barIdx, newHeight] = animations[i];
-                const barStyle = arrayBars[barIdx].style;
+                const barStyle = arrayBars[barIdx].childNodes;
                 setTimeout(() => {
-                    barStyle.height = `${newHeight}px`;
+                    barStyle[0].style.height = `${newHeight}px`
+                    barStyle[1].innerHTML = newHeight;
                     if (sound) {
                         playAudio(calcFrequency(i), DURATION);
                     }
@@ -119,20 +138,15 @@ const SortingVisualizer = () => {
             const isColorChange = (i % 4 === 0) || (i % 4 === 1)
             const arrayBars = document.getElementsByClassName('div-bar');
             if (isColorChange === true) {
-                const color = (i % 4 === 0) ? 'red' : 'turquoise';
+                const color = (i % 4 === 0) ? PRIMARY_COLOR : SECONDARY_COLOR;
                 const [barOneIdx, barTwoIdx] = animations[i];
-                const barOneStyle = arrayBars[barOneIdx].style;
-                const barTwoStyle = arrayBars[barTwoIdx].style;
+                const barOneStyle = arrayBars[barOneIdx];
+                const barTwoStyle = arrayBars[barTwoIdx];
                 setTimeout(() => {
-                    barOneStyle.backgroundColor = color;
-                    barTwoStyle.backgroundColor = color;
+                    barOneStyle.style.background = color;
+                    barTwoStyle.style.background = color;
                     if (sound) {
-                        if (i < Math.floor(animations.length / 2)) {
-                            playAudio(calcFrequency(i), DURATION);
-                        }
-                        else {
-                            playAudio(calcFrequency(animations.length - i), DURATION);
-                        }
+                        playAudio(calcFrequency(i), DURATION);
                     }
                 }, i * barSpeed);
             } else {
@@ -140,16 +154,12 @@ const SortingVisualizer = () => {
                 if (barIdx === -1) {
                     continue
                 }
-                const barStyle = arrayBars[barIdx].style;
+                const barStyle = arrayBars[barIdx].childNodes;
                 setTimeout(() => {
-                    barStyle.height = `${newHeight}px`;
+                    barStyle[0].style.height = `${newHeight}px`
+                    barStyle[1].innerHTML = newHeight;
                     if (sound) {
-                        if (i < Math.floor(animations.length / 2)) {
-                            playAudio(calcFrequency(i), DURATION);
-                        }
-                        else {
-                            playAudio(calcFrequency(animations.length - i), DURATION);
-                        }
+                        playAudio(calcFrequency(i), DURATION);
                     }
                 }, i * barSpeed);
             }
@@ -166,22 +176,24 @@ const SortingVisualizer = () => {
             const isColorChange = animations[i][0] === "comparision1" || animations[i][0] === "comparision2"
             const arrayBars = document.getElementsByClassName('div-bar');
             if (isColorChange === true) {
-                const color = animations[i][0] === "comparision1" ? 'red' : 'turquoise';
+                const color = animations[i][0] === "comparision1" ? PRIMARY_COLOR : SECONDARY_COLOR;
                 const [s, barOneIdx, barTwoIdx] = animations[i];
-                const barOneStyle = arrayBars[barOneIdx].style;
-                const barTwoStyle = arrayBars[barTwoIdx].style;
+                const barOneStyle = arrayBars[barOneIdx];
+                const barTwoStyle = arrayBars[barTwoIdx];
                 setTimeout(() => {
-                    barOneStyle.backgroundColor = color;
-                    barTwoStyle.backgroundColor = color;
+                    barOneStyle.style.background = color;
+                    barTwoStyle.style.background = color;
                     if (sound) {
                         playAudio(calcFrequency(i), DURATION);
                     }
                 }, i * barSpeed);
-            } else {
+            } else if(animations[i][0] === "overwrite") {
                 const [s, barIdx, newHeight] = animations[i];
-                const barStyle = arrayBars[barIdx].style;
+                const barStyle = arrayBars[barIdx].childNodes;
                 setTimeout(() => {
-                    barStyle.height = `${newHeight}px`;
+                    console.log(animations[i], newHeight);
+                    barStyle[0].style.height = `${newHeight}px`
+                    barStyle[1].innerHTML = newHeight;
                     if (sound) {
                         playAudio(calcFrequency(i), DURATION);
                     }
@@ -200,13 +212,13 @@ const SortingVisualizer = () => {
             const isColorChange = animations[i][0] === "comparision1" || animations[i][0] === "comparision2";
             const arrayBars = document.getElementsByClassName("div-bar");
             if (isColorChange === true) {
-                const color = animations[i][0] === "comparision1" ? 'red' : 'turquoise';
+                const color = animations[i][0] === "comparision1" ? PRIMARY_COLOR : SECONDARY_COLOR;
                 const [s, barOneIdx, barTwoIdx] = animations[i];
-                const barOneStyle = arrayBars[barOneIdx].style;
-                const barTwoStyle = arrayBars[barTwoIdx].style;
+                const barOneStyle = arrayBars[barOneIdx];
+                const barTwoStyle = arrayBars[barTwoIdx];
                 setTimeout(() => {
-                    barOneStyle.backgroundColor = color;
-                    barTwoStyle.backgroundColor = color;
+                    barOneStyle.style.background = color;
+                    barTwoStyle.style.background = color;
                     if (sound) {
                         playAudio(calcFrequency(i), DURATION);
                     }
@@ -214,18 +226,18 @@ const SortingVisualizer = () => {
             } else {
                 if (animations[i][0] === "index_change") {
                     const [s, barOneIdx, barTwoIdx] = animations[i];
-                    const barTwoStyle = arrayBars[barTwoIdx].style;
+                    const barTwoStyle = arrayBars[barTwoIdx];
                     setTimeout(() => {
-                        barTwoStyle.color = 'black';
                         if (sound) {
                             playAudio(calcFrequency(i), DURATION);
                         }
                     }, i * barSpeed);
                 } else {
                     const [s, barIdx, newHeight] = animations[i];
-                    const barStyle = arrayBars[barIdx].style;
+                    const barStyle = arrayBars[barIdx].childNodes;
                     setTimeout(() => {
-                        barStyle.height = `${newHeight}px`;
+                        barStyle[0].style.height = `${newHeight}px`
+                        barStyle[1].innerHTML = newHeight;
                         if (sound) {
                             playAudio(calcFrequency(i), DURATION);
                         }
@@ -244,25 +256,28 @@ const SortingVisualizer = () => {
             <button onClick={BubbleSort}>Bubble Sort</button>
             <button onClick={InsertionSort}>Insertion Sort</button>
             <button onClick={SelectionSort}>Selection Sort</button>
-            <button onClick={SoundToggle}>Sound {sound? 'Off': 'On'}</button>
+            <button onClick={SoundToggle}>Sound {sound ? 'Off' : 'On'}</button>
         </div>
         <div className="bars">
             <div className="noofbars">
-                <label htmlFor="noofbars">Elements</label>
-                <input type="range" name="noofbars" min="4" max="200" defaultValue="52" onChange={changeBars} />
+                <label htmlFor="noofbars">Array Size : {newArray.length}</label>
+                <input type="range" name="noofbars" min={MIN_BARS} max={MAX_BARS} defaultValue={DEFAULT_BARS} onChange={changeBars} />
             </div>
             <div className="barspeed">
-                <label htmlFor="noofbars">Play Speed</label>
-                <input type="range" name="noofbars" min="0" max="120" step="10" defaultValue="10" onChange={changeSpeed} />
+                <label htmlFor="noofbars">Play Speed : { MAX_SPEED - MIN_SPEED -  barSpeed+ 1}</label>
+                <input type="range" name="noofbars" min={MIN_SPEED} max={MAX_SPEED} step="10" defaultValue="-50" onChange={changeSpeed} />
             </div>
         </div>
         <div className="div-container">
             {newArray.map((val, idx) => {
-                return <div key={idx} className="div-bar" id={idx + 1} style={{ height: `${val}px` }}></div>
+                return <div key={idx} id={idx + 1} className="div-bar">
+                    <div style={{ height: `${val}px` }} className="bar"></div>
+                    <span className="value">{val}</span>
+                </div>
             })}
         </div>
         <div className="algo-code">
-            <BubbleSortCode code={code} name={Name} />
+            {showCode?<BubbleSortCode code={code} name={Name} />: ''}
         </div>
         <div className="div-table">
             <h2>{complexity.SortAlgo} Algorithm Complexity</h2>
