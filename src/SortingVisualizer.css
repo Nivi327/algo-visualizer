@@ -1,5 +1,5 @@
 .div-container {
-    background-color: rgba(36,36,36,1);
+    background-color: rgba(36, 36, 36, 1);
     padding: 3rem 0.2rem 0rem 0.2rem;
     width: fit-content;
     margin: 0 auto;
@@ -180,6 +180,7 @@ input[type="range"]:focus::-moz-range-thumb {
         text-align: center;
         font-size: 0.5rem;
     }
+
     .div-bar {
         width: 8px;
         border-top-left-radius: 2px;
@@ -202,6 +203,7 @@ input[type="range"]:focus::-moz-range-thumb {
 }
 
 @media screen and (max-width: 720px) {
+
     .noofbars input,
     .barspeed input {
         width: 90%;
@@ -212,6 +214,7 @@ input[type="range"]:focus::-moz-range-thumb {
         text-align: center;
         font-size: 0.45rem;
     }
+
     .div-bar {
         width: 8px;
         margin: 0 0.5px;

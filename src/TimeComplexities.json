@@ -1,0 +1,49 @@
+{
+    "QuickSort": {
+        "Best": "N*logN",
+        "Average": "N*logN",
+        "Worst": "N*N",
+        "Space": "1"
+    },
+    "MergeSort":{
+        "Best": "N*logN",
+        "Average": "N*logN",
+        "Worst": "N*logN",
+        "Space": "N"
+    },
+    "BubbleSort": {
+        "Best": "N",
+        "Average": "N*N",
+        "Worst": "N*N",
+        "Space": "1"
+    },
+    "InsertionSort": {
+        "Best": "N",
+        "Average": "N*N",
+        "Worst": "N*N",
+        "Space": "1"
+    },
+    "SelectionSort": {
+        "Best": "N*N",
+        "Average": "N*N",
+        "Worst": "N*N",
+        "Space": "1"
+    },
+    "LinearSearch": {
+        "Best": "1",
+        "Average": "N",
+        "Worst": "N",
+        "Space": "1"
+    },
+    "BinarySearch": {
+        "Best": "1",
+        "Average": "log N",
+        "Worst": "log N",
+        "Space": "1"
+    },"Seive": {
+        "Best": "N*log log N",
+        "Average": "N*log log N",
+        "Worst": "N*log log N",
+        "Space": "N"
+    }
+}

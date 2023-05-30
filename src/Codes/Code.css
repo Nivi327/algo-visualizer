@@ -1,0 +1,48 @@
+.code-heading {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    font-size: 1.4rem;
+    color: white;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 95%;
+    padding: 0.7rem 0.5rem;
+    color: white;
+    font-size: 1.1rem;
+}
+
+.outer-container {
+    width: 30%;
+    margin: 0 auto;
+    padding: 1rem;
+    background-color: #131417;
+}
+
+@media screen and (max-width:1300px) and (min-width:1040px) {
+    .outer-container {
+        width: 35%;
+    }
+}
+
+@media screen and (max-width:1040px) and (min-width:800px) {
+    .outer-container {
+        width: 45%;
+    }
+}
+
+@media screen and (max-width:800px) and (min-width:600px) {
+    .outer-container {
+        width: 60%;
+    }
+}
+
+@media screen and (max-width:600px) {
+    .outer-container {
+        width: 89%;
+    }
+}

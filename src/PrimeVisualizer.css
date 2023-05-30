@@ -1,0 +1,62 @@
+.prime-div {
+    width: 95%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    color: #fff;
+    border: 1px solid #2CD3E1;
+    width: 2rem;
+    text-align: center;
+    margin: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+.prime-visiting {
+    animation-duration: 1s;
+    animation-name: isPrime;
+}
+
+@keyframes isPrime {
+    0% {
+        transform: rotate(45deg);
+        background-color: green;
+        border-radius: 100%;
+    }
+
+    50% {
+        background-color: green;
+        transform: scale(1.5);
+
+    }
+
+    75% {
+        background-color: green;
+        transform: rotate(-90deg);
+    }
+
+    100% {
+
+        background-color: green;
+        transform: rotate(45deg);
+    }
+}
+
+
+.card-visiting {
+    outline: 1px solid #2CD3E1;
+    animation-duration: 1s;
+    animation-delay: 0s;
+    animation-name: isVisiting;
+}
+
+@keyframes isVisiting {
+    50% {
+        transform: scale(1.3);
+    }
+}

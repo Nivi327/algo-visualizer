@@ -5,8 +5,8 @@ import { AiFillPlaySquare } from 'react-icons/ai';
 import './SortingVisualizer.css';
 import './SearchingVisualizer.css';
 import { binarySearch } from './SearchingAlgorithms/BinarySearch';
-import Complexities from './SortingMethods/TimeComplexities.json';
-import BubbleSortCode from './SortingMethods/Codes/Code';
+import Complexities from './TimeComplexities.json';
+import Code from "./Codes/Code";
 
 const FREQ_MAX = 600;
 const FREQ_MIN = 200;
@@ -187,10 +187,10 @@ const SearchingVisualizer = ({ showCode }) => {
             </div>
             <div>
                 <div className="algo-code">
-                    {showCode ? <BubbleSortCode code="LinearSearch" name="Linear Search" /> : ''}
+                    {showCode ? <Code code="LinearSearch" name="Linear Search" /> : ''}
                 </div>
                 <div className="algo-code">
-                    {showCode ? <BubbleSortCode code="BinarySearch" name="Binary Search" /> : ''}
+                    {showCode ? <Code code="BinarySearch" name="Binary Search" /> : ''}
                 </div>
             </div>
             <div className='complexities'>
