@@ -64,18 +64,16 @@ const SortingVisualizer = ({ showCode }) => {
 
     const ExecuteMethod = () => {
         setDisable(true);
-        if (disable) {
-            if (currrentMethod === SortMethods[0]) {
-                BubbleSort();
-            } else if (currrentMethod === SortMethods[1]) {
-                SelectionSort();
-            } else if (currrentMethod === SortMethods[2]) {
-                InsertionSort();
-            } else if (currrentMethod === SortMethods[3]) {
-                mergeSort();
-            } else if (currrentMethod === SortMethods[4]) {
-                quickSort();
-            }
+        if (currrentMethod === SortMethods[0]) {
+            BubbleSort();
+        } else if (currrentMethod === SortMethods[1]) {
+            SelectionSort();
+        } else if (currrentMethod === SortMethods[2]) {
+            InsertionSort();
+        } else if (currrentMethod === SortMethods[3]) {
+            mergeSort();
+        } else if (currrentMethod === SortMethods[4]) {
+            quickSort();
         }
         setDisable(false);
     }
@@ -301,7 +299,7 @@ const SortingVisualizer = ({ showCode }) => {
             <button onClick={BubbleSort}>Bubble Sort</button>
             <button onClick={InsertionSort}>Insertion Sort</button>
             <button onClick={SelectionSort}>Selection Sort</button> */}
-            <select className="form-select" onChange={handleMethodClick} disabled={disable}>
+            <select className="form-select" onChange={handleMethodClick}>
                 {SortMethods.map((method, idx) => {
                     return <option key={idx} value={method}>{method}</option>
                 })}
