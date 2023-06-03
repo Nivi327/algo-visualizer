@@ -1,28 +1,31 @@
 import { useState } from 'react';
 import './Nav.css';
+import { Link } from 'react-router-dom';
 
-const Nav = () => {
-    const [showCode, setShowCode] = useState(false);
+const Nav = ({setShowCode}) => {
 
     const ShowTheCode = () => {
         setShowCode(prevCode => !prevCode);
     }
 
-    return <div className="navbar">
-        <div className="logo">
-            <span>ALGO</span>
-            <span style={{color: '#2CD3E1'}}>VISUALIZER</span>
-        </div>
-        <div className="links">
-            <ul>
-                <li>Sorting</li>
-                <li>Searching</li>
+    return <nav className="navbar">
+        <div className="logo">ALGO<span style={{color:'#2CD3E1'}}>VISUALIZER</span></div>
+        <ul className="nav-links" style={{listStyleType: "none"}}>
+            <input type="checkbox" id="checkbox_toggle" />
+            <label htmlFor="checkbox_toggle" className="hamburger">☰</label>
+            <div className="menu">
+                <li><Link to='/sorting'>Sorting</Link></li>
+                <li><Link to='/searching'>Searching</Link></li>
+                <li><Link to='/linked-list'>LinkedList</Link></li>
+                <li><Link to='/primes'>Primes</Link></li>
+                <li><Link to='/more'>More</Link></li>
                 <li>
-                    <button onClick={ShowTheCode}>Show the Code</button>
+                    <button onClick={ShowTheCode}>Check Code</button>
                 </li>
-            </ul>
-        </div>
-    </div>
+            </div>
+        </ul>
+    </nav>
+
 };
 
 

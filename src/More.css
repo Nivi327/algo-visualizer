@@ -1,0 +1,19 @@
+.more {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    color: white;
+    font-size: 2rem;
+    margin-top: 10%;
+    margin-bottom: 15%;
+}
+
+@media screen and (max-width:768px) {
+    .more {
+        margin-top: 50%;
+        font-size: 1.4rem;
+        margin-bottom: 50%;
+    }
+}

@@ -27,10 +27,11 @@ const SortingVisualizer = ({ showCode }) => {
     const [newArray, setNewArray] = useState([]);
     const [noOfBars, setNoOfBars] = useState(DEFAULT_BARS);
     const [barSpeed, setBarSpeed] = useState(100);
-    // const sound = useRef(true);
-    const [code, setCode] = useState("MergeSort");
-    const [Name, setName] = useState("Merge Sort");
-    const [complexity, setComplexity] = useState({ SortAlgo: "Merge Sort", Best: "N*logN", Average: "N*logN", Worst: "N*logN", Space: "N" });
+    const [code, setCode] = useState("BubbleSort");
+    const [Name, setName] = useState("Bubble Sort");
+    const [disable, setDisable] = useState(false);
+    const [currrentMethod, setCurrentMethod] = useState("Bubble Sort");
+    const [complexity, setComplexity] = useState({ SortAlgo: "Bubble Sort", Best: "N*", Average: "N*N", Worst: "N*N", Space: "1" });
 
     const randomInt = (a, b) => {
         return Math.floor(Math.random() * (a - b + 1) + b)
@@ -46,6 +47,37 @@ const SortingVisualizer = ({ showCode }) => {
 
     const changeBars = (e) => {
         setNoOfBars(e.target.value);
+    }
+
+    const SortMethods = [
+        "Bubble Sort",
+        "Selection Sort",
+        "Insertion Sort",
+        "Merge Sort",
+        "Quick Sort"
+    ]
+
+    const handleMethodClick = (e) => {
+        const Method = e.target.value;
+        setCurrentMethod(Method);
+    }
+
+    const ExecuteMethod = () => {
+        setDisable(true);
+        if (disable) {
+            if (currrentMethod === SortMethods[0]) {
+                BubbleSort();
+            } else if (currrentMethod === SortMethods[1]) {
+                SelectionSort();
+            } else if (currrentMethod === SortMethods[2]) {
+                InsertionSort();
+            } else if (currrentMethod === SortMethods[3]) {
+                mergeSort();
+            } else if (currrentMethod === SortMethods[4]) {
+                quickSort();
+            }
+        }
+        setDisable(false);
     }
 
     // const SoundToggle = () => {
@@ -263,22 +295,27 @@ const SortingVisualizer = ({ showCode }) => {
 
     return (<>
         <div className="btns">
-            <button onClick={resetArray}>Reset</button>
-            <button onClick={quickSort}>Quick Sort</button>
+            <button onClick={resetArray}>Reset Array</button>
+            {/* <button onClick={quickSort}>Quick Sort</button>
             <button onClick={mergeSort}>Merge Sort</button>
             <button onClick={BubbleSort}>Bubble Sort</button>
             <button onClick={InsertionSort}>Insertion Sort</button>
-            <button onClick={SelectionSort}>Selection Sort</button>
-            {/* <button onClick={SoundToggle}>Sound {sound.current ? 'Off' : 'On'}</button> */}
+            <button onClick={SelectionSort}>Selection Sort</button> */}
+            <select className="form-select" onChange={handleMethodClick} disabled={disable}>
+                {SortMethods.map((method, idx) => {
+                    return <option key={idx} value={method}>{method}</option>
+                })}
+            </select>
+            <button type="submit" onClick={ExecuteMethod}>Visualize</button>
         </div>
         <div className="bars">
             <div className="noofbars">
                 <label htmlFor="noofbars">Array Size : {newArray.length}</label>
-                <input type="range" name="noofbars" min={MIN_BARS} max={MAX_BARS} defaultValue={DEFAULT_BARS} onChange={changeBars} />
+                <input type="range" name="noofbars" min={MIN_BARS} max={MAX_BARS} defaultValue={DEFAULT_BARS} onChange={changeBars} disabled={disable} />
             </div>
             <div className="barspeed">
                 <label htmlFor="noofbars">Play Speed : {MAX_SPEED - MIN_SPEED - barSpeed + 1}</label>
-                <input type="range" name="noofbars" min={MIN_SPEED} max={MAX_SPEED} step="10" defaultValue="-50" onChange={changeSpeed} />
+                <input type="range" name="noofbars" min={MIN_SPEED} max={MAX_SPEED} step="10" defaultValue="-50" onChange={changeSpeed} disabled={disable} />
             </div>
         </div>
         <div className="div-container">

@@ -45,5 +45,14 @@
         "Average": "N*log log N",
         "Worst": "N*log log N",
         "Space": "N"
+    }, "LinkedList": {
+        "Search": "N",
+        "InsertAtEnd": "N",
+        "InsertAtBegin": "1",
+        "InsertAtGivenPos": "N",
+        "RemoveFromEnd": "N",
+        "RemoveFromBegin": "1",
+        "RemoveFromGivenPos": "N",
+        "Reversing": "N"
     }
 }

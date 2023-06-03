@@ -1,0 +1,76 @@
+.tool-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    padding: 5rem 0 7rem 0;
+    margin-left: 2%;
+    width: 100%;
+}
+
+.label {
+    display: block;
+    color: rgb(241, 240, 240);
+    font-size: 1.2rem;
+    margin-left: 13px;
+}
+
+.value-input,
+.index-input {
+    background-color: #537FE7;
+    outline: none;
+    border: 1px solid #181823;
+    border-radius: 10px;
+    font-size: 18px;
+    width: 13rem;
+    color: white;
+    font-weight: 600;
+    padding: 10px 15px;
+    margin-top: 0.7rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    transition: 0.2s ease-in;
+}
+
+.valid {
+    color: red;
+}
+
+.submit {
+    background-color: #537FE7;
+    outline: none;
+    border: 1px solid #181823;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    color: white;
+    font-weight: 600;
+    width: 15rem;
+    padding: 10px 15px;
+    margin-top: 0.7rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    transition: 0.2s ease-in;
+}
+
+.submit-container {
+    align-self: end;
+    border-radius: 4px;
+}
+
+.submit:hover {
+    background-color: #444444;
+}
+
+@media screen and (max-width: 740px) {
+    .tool-bar {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin: 0;
+    }
+
+    .submit-container {
+        align-self: center;
+    }
+}

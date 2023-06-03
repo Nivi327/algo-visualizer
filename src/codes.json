@@ -450,5 +450,464 @@
             "code": "print()",
             "indent": 0
         }
+    ],
+    "LinkedList": [
+        {
+            "code": "class Node:",
+            "indent": 0
+        },
+        {
+            "code": "def __init__(self, val, next):",
+            "indent": 1
+        },
+        {
+            "code": "self.val = val",
+            "indent": 2
+        },
+        {
+            "code": "self.next = None",
+            "indent": 2
+        },
+        {
+            "code": "",
+            "indent": 2
+        },
+        {
+            "code": "",
+            "indent": 2
+        },
+        {
+            "code": "class LL:",
+            "indent": 0
+        },
+        {
+            "code": "def __init__(self):",
+            "indent": 1
+        },
+        {
+            "code": "self.head = None",
+            "indent": 2
+        },
+        {
+            "code": "self.length = 0",
+            "indent": 2
+        },
+        {
+            "code": "",
+            "indent": 2
+        },
+        {
+            "code": "",
+            "indent": 2
+        },
+        {
+            "code": "def InsertAtBegin(self, val):",
+            "indent": 1
+        },
+        {
+            "code": "new_node = Node(val)",
+            "indent": 2
+        },
+        {
+            "code": "if this.head == None:",
+            "indent": 2
+        },
+        {
+            "code": "this.head = new_node",
+            "indent": 3
+        },
+        {
+            "code": "else:",
+            "indent": 2
+        },
+        {
+            "code": "new_node.next = this.head",
+            "indent": 3
+        },
+        {
+            "code": "this.head = new_node",
+            "indent": 3
+        },
+        {
+            "code": "this.length += 1",
+            "indent": 2
+        },
+        {
+            "code": "",
+            "indent": 2
+        },
+        {
+            "code": "",
+            "indent": 2
+        },
+        {
+            "code": "def InsertAtEnd(self, val):",
+            "indent": 1
+        },
+        {
+            "code": "new_node = Node(val)",
+            "indent": 2
+        },
+        {
+            "code": "if this.head == None:",
+            "indent": 2
+        },
+        {
+            "code": "this.head = new_node",
+            "indent": 3
+        },
+        {
+            "code": "else:",
+            "indent": 2
+        },
+        {
+            "code": "this.head.next = new_node",
+            "indent": 3
+        },
+        {
+            "code": "this.length += 1",
+            "indent": 2
+        },
+        {
+            "code": "",
+            "indent": 2
+        },
+        {
+            "code": "",
+            "indent": 2
+        },
+        {
+            "code": "def InsertAtIndex(self, val, index):",
+            "indent": 1
+        },
+        {
+            "code": "new_node = Node(val)",
+            "indent": 2
+        },
+        {
+            "code": "if index == 0:",
+            "indent": 2
+        },
+        {
+            "code": "self.InsertAtBegin(val)",
+            "indent": 3
+        },
+        {
+            "code": "if index == self.length:",
+            "indent": 2
+        },
+        {
+            "code": "self.InsertAtBegin(val)",
+            "indent": 3
+        },
+        {
+            "code": "else:",
+            "indent": 2
+        },
+        {
+            "code": "cur = this.head",
+            "indent": 3
+        },
+        {
+            "code": "prev = this.head",
+            "indent": 3
+        },
+        {
+            "code": "for i in range(index):",
+            "indent": 3
+        },
+        {
+            "code": "prev = cur",
+            "indent": 4
+        },
+        {
+            "code": "cur = cur.next",
+            "indent": 4
+        },
+        {
+            "code": "prev.next = new_node",
+            "indent": 3
+        },
+        {
+            "code": "this.length += 1",
+            "indent": 3
+        },
+        {
+            "code": "",
+            "indent": 2
+        },
+        {
+            "code": "",
+            "indent": 2
+        },
+        {
+            "code": "def RemoveAtEnd(self):",
+            "indent": 1
+        },
+        {
+            "code": "if this.head == None or this.head.next == None:",
+            "indent": 2
+        },
+        {
+            "code": "if this.length > 0:",
+            "indent": 3
+        },
+        {
+            "code": "this.length -= 1",
+            "indent": 4
+        },
+        {
+            "code": "return None",
+            "indent": 3
+        },
+        {
+            "code": "else:",
+            "indent": 2
+        },
+        {
+            "code": "node = this.head",
+            "indent": 3
+        },
+        {
+            "code": "l = self.length",
+            "indent": 3
+        },
+        {
+            "code": "while l > 0:",
+            "indent": 3
+        },
+        {
+            "code": "node = node.next",
+            "indent": 4
+        },
+        {
+            "code": "value = node.next.val",
+            "indent": 3
+        },
+        {
+            "code": "node.next = None",
+            "indent": 3
+        },
+        {
+            "code": "if this.length > 0:",
+            "indent": 2
+        },
+        {
+            "code": "this.length -= 1",
+            "indent": 3
+        },
+        {
+            "code": "return value",
+            "indent": 3
+        },
+        {
+            "code": "",
+            "indent": 2
+        },
+        {
+            "code": "",
+            "indent": 2
+        },
+        {
+            "code": "def RemoveAtHead(self):",
+            "indent": 1
+        },
+        {
+            "code": "if this.head == None or this.head.next == None:",
+            "indent": 2
+        },
+        {
+            "code": "if this.length > 0:",
+            "indent": 3
+        },
+        {
+            "code": "this.length -= 1",
+            "indent": 4
+        },
+        {
+            "code": "return None",
+            "indent": 3
+        },
+        {
+            "code": "else:",
+            "indent": 2
+        },
+        {
+            "code": "value = this.head.val",
+            "indent": 3
+        },
+        {
+            "code": "this.head = this.head.next",
+            "indent": 3
+        },
+        {
+            "code": "this.length -= 1",
+            "indent": 3
+        },
+        {
+            "code": "return value",
+            "indent": 3
+        },
+        {
+            "code": "",
+            "indent": 2
+        },
+        {
+            "code": "",
+            "indent": 2
+        },
+        {
+            "code": "def RemoveAtIndex(self, index):",
+            "indent": 1
+        },
+        {
+            "code": "if index == 0:",
+            "indent": 2
+        },
+        {
+            "code": "self.RemoveAtHead()",
+            "indent": 3
+        },
+        {
+            "code": "elif index == self.length-1:",
+            "indent": 2
+        },
+        {
+            "code": "self.RemoveAtEnd()",
+            "indent": 3
+        },
+        {
+            "code": "else:",
+            "indent": 2
+        },
+        {
+            "code": "prev = self.getAtIdx(index-1)",
+            "indent": 3
+        },
+        {
+            "code": "rmvd = prev.next",
+            "indent": 3
+        },
+        {
+            "code": "value = node.val",
+            "indent": 3
+        },
+        {
+            "code": "prev.next = rmvd.next",
+            "indent": 3
+        },
+        {
+            "code": "this.length -= 1",
+            "indent": 3
+        },
+        {
+            "code": "return value",
+            "indent": 3
+        },
+        {
+            "code": "",
+            "indent": 2
+        },
+        {
+            "code": "",
+            "indent": 2
+        },
+        {
+            "code": "def getNodeAtIdx(self, index):",
+            "indent": 1
+        },
+        {
+            "code": "if index == 0:",
+            "indent": 2
+        },
+        {
+            "code": "return self.head",
+            "indent": 3
+        },
+        {
+            "code": "elif self.length-1 < index:",
+            "indent": 2
+        },
+        {
+            "code": "return None",
+            "indent": 3
+        },
+        {
+            "code": "else:",
+            "indent": 2
+        },
+        {
+            "code": "node = this.head",
+            "indent": 3
+        },
+        {
+            "code": "for i in range(index):",
+            "indent": 3
+        },
+        {
+            "code": "node = node.next",
+            "indent": 4
+        },
+        {
+            "code": "return node",
+            "indent": 3
+        },
+        {
+            "code": "",
+            "indent": 2
+        },
+        {
+            "code": "",
+            "indent": 2
+        },
+        {
+            "code": "def reverseLL(self):",
+            "indent": 1
+        },
+        {
+            "code": "if self.length == 0:",
+            "indent": 2
+        },
+        {
+            "code": "return self.head",
+            "indent": 3
+        },
+        {
+            "code": "cur = this.head",
+            "indent": 2
+        },
+        {
+            "code": "prev = None",
+            "indent": 2
+        },
+        {
+            "code": "for i in range(self.length):",
+            "indent": 2
+        },
+        {
+            "code": "nxt = cur.next",
+            "indent": 3
+        },
+        {
+            "code": "cur.next = prev",
+            "indent": 3
+        },
+        {
+            "code": "prev = cur",
+            "indent": 3
+        },
+        {
+            "code": "cur = next",
+            "indent": 3
+        },
+        {
+            "code": "this.head = prev",
+            "indent": 2
+        },
+        {
+            "code": "return this.head",
+            "indent": 2
+        }
+
     ]
 }

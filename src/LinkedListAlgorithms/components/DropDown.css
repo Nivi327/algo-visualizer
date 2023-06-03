@@ -1,0 +1,65 @@
+
+.form-select {
+    background-color: #537FE7;
+    outline: none;
+    border: 1px solid #181823;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    color: white;
+    font-weight: 600;
+    padding: 10px 15px;
+    text-align: center;
+    width: 15rem;
+    margin-top: 0.7rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    transition: 0.2s ease-in;
+}
+
+.form-select option {
+    font-weight: 600;
+    color: white;
+}
+
+.method-current {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+    color: #ffffff;
+    border-radius: 4px;
+}
+
+.current-text {
+    color: #ffffff;
+}
+
+.drop-opened {
+    transform: rotate(180deg);
+    transition: 0.3s ease-in-out;
+}
+
+.drop-closed {
+    transform: rotate(0);
+    transition: 0.3s ease-in-out;
+}
+
+.method-list {
+    position: absolute;
+    top: 1.5rem;
+    left: 0;
+    list-style-type: none;
+}
+
+.method {
+    width: 5.5rem;
+    height: 2.3rem;
+    background-color: green;
+    padding: 0.5rem 1rem;
+    color: rgb(241, 240, 240);
+    margin-left: -40px;
+}
+
+.method:hover {
+    background-color: #ffffff;
+}
