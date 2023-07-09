@@ -9,6 +9,7 @@ import More from './More';
 import LinkedListVisualizer from './LinkedListAlgorithms/LinkedListVisualizer';
 import Nav from './Nav';
 import Footer from './Footer';
+import PathVisualizer from './PathFindingVisualizer/PathVisualizer';
 
 function App() {
   const [showCode, setShowCode] = useState(false);
@@ -23,6 +24,7 @@ function App() {
         <Route path='/' element={<SortingVisualizer showCode={showCode}/>} />
         <Route path='/sorting' element={<SortingVisualizer showCode={showCode}/>} />
         <Route path='/searching' element={<SearchingVisualizer showCode={showCode}/>} />
+        <Route path='/path-finding' element={<PathVisualizer showCode={showCode}/>} />
         <Route path='/primes' element={<PrimeVisualizer showCode={showCode}/>} />
         <Route path='/linked-list' element={<LinkedListVisualizer showCode={showCode}/>} />
         <Route path='/more' element={<More />} />

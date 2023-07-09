@@ -16,6 +16,7 @@ const Nav = ({setShowCode}) => {
             <div className="menu">
                 <li><Link to='/sorting'>Sorting</Link></li>
                 <li><Link to='/searching'>Searching</Link></li>
+                <li><Link to='/path-finding'>PathFinding</Link></li>
                 <li><Link to='/linked-list'>LinkedList</Link></li>
                 <li><Link to='/primes'>Primes</Link></li>
                 <li><Link to='/more'>More</Link></li>

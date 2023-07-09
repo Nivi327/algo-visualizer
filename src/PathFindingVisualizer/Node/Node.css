@@ -1,0 +1,96 @@
+.path-node {
+    width: 30px;
+    height: 30px;
+    margin-bottom: 0;
+    outline: 1px solid rgb(44, 211, 225);
+    display: inline-block;
+}
+
+.node-finish {
+    background-image: url('../../assets/finish.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.node-start {
+    background-image: url('../../assets/race-3.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.node-visited {
+    animation-name: animationVisit;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-in-out;
+    animation-delay: 0;
+    animation-direction: alternate;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-play-state: running;
+}
+
+@keyframes animationVisit {
+    0% {
+        transform: scale(0.3);
+        background-color: gray;
+        border-radius: 100%;
+    }
+
+    50% {
+        background-color: gray;
+    }
+
+    75% {
+        transform: scale(1.2);
+        background-color: gray;
+    }
+
+    100% {
+        transform: scale(1);
+        background-color: #537FE7;
+    }
+}
+
+.node-wall {
+    background: url('../../assets/cartoon-wave.png');
+    background-size: cover;
+}
+
+.node-shortest-path {
+    animation-name: shortestPath;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-out;
+    animation-delay: 0;
+    animation-direction: alternate;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-play-state: running;
+}
+
+@keyframes shortestPath {
+    0% {
+        transform: scale(0.6);
+        background: url('../../assets/road-full-3.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    50% {
+        transform: scale(1.2);
+        background: url('../../assets/road-full-3.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    100% {
+        transform: scale(1);
+        background: url('../../assets/road-full-3.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+}

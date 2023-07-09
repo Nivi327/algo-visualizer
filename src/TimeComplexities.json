@@ -54,5 +54,10 @@
         "RemoveFromBegin": "1",
         "RemoveFromGivenPos": "N",
         "Reversing": "N"
+    }, "PathFinding": {
+        "Breadth First Search(BFS)": "|V| + |E|",
+        "Depth First Search(DFS)": "|V| + |E|",
+        "Dijkstra Shortest Path": "(|E| + |V|)*log |V|",
+        "Space": "|V|" 
     }
 }

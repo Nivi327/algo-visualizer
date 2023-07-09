@@ -909,5 +909,375 @@
             "indent": 2
         }
 
+    ],
+    "BFS": [
+        {
+            "code": "from collections import deque",
+            "indent": 0
+        },
+        {
+            "code": "# consider a grid with 0 - water 1 - land",
+            "indent": 0
+        },
+        {
+            "code": "di = [-1, 0, 0, 1]",
+            "indent": 0
+        },
+        {
+            "code": "dj = [0, -1, 1, 0]",
+            "indent": 0
+        },
+        {
+            "code": "def BFS(grid, src, dest):",
+            "indent": 0
+        },
+        {
+            "code": " ",
+            "indent": 2
+        },
+        {
+            "code": "i = src[0], j = src[1]",
+            "indent": 1
+        },
+        {
+            "code": "if i < 0 or i >= len(grid) or j < 0 or j <= len(grid[0]) or grid[i][j] == 0:",
+            "indent": 1
+        },
+        {
+            "code": "return",
+            "indent": 2
+        },
+        {
+            "code": " ",
+            "indent": 2
+        },
+        {
+            "code": "vis=[[False for _ in range(len(grid)] for _ in range(len(grid[0])]",
+            "indent": 1
+        },
+        {
+            "code": " ",
+            "indent": 2
+        },
+        {
+            "code": "par=[[None for _ in range(len(grid)] for _ in range(len(grid[0])]",
+            "indent": 1
+        },
+        {
+            "code": " ",
+            "indent": 2
+        },
+        {
+            "code": "q = deque()",
+            "indent": 1
+        },
+        {
+            "code": "q.append((src[0], src[1]))",
+            "indent": 1
+        },
+        {
+            "code": "vis[src[0]][src[1]] = True",
+            "indent": 1
+        },
+        {
+            "code": "while len(q) != 0:",
+            "indent": 1
+        },
+        {
+            "code": "node = q.popleft()",
+            "indent": 2
+        },
+        {
+            "code": "row, col = node[0], node[1]",
+            "indent": 2
+        },
+        {
+            "code": "for k in range(4):",
+            "indent": 2
+        },
+        {
+            "code": "r, c = c1 + di[k], c2 + dj[k]",
+            "indent": 3
+        },
+        {
+            "code": " ",
+            "indent": 2
+        },
+        {
+            "code": "if r >= 0 and r < len(grid) and c >= 0 and c < len(grid[0]) and grid[r][c] == 1 and vis[r][c] == False:",
+            "indent": 3
+        },
+        {
+            "code": " ",
+            "indent": 2
+        },
+        {
+            "code": "vis[r][c] = True",
+            "indent": 4
+        },
+        {
+            "code": "par[r][c] = (row, col)",
+            "indent": 4
+        },
+        {
+            "code": "q.append((r, c))",
+            "indent": 4
+        },
+        {
+            "code": " ",
+            "indent": 2
+        },
+        {
+            "code": "return par",
+            "indent": 1
+        }
+    ],
+    "DFS": [
+        {
+            "code": "from collections import deque",
+            "indent": 0
+        },
+        {
+            "code": "# consider a grid with 0 - water 1 - land",
+            "indent": 0
+        },
+        {
+            "code": "di = [-1, 0, 0, 1]",
+            "indent": 0
+        },
+        {
+            "code": "dj = [0, -1, 1, 0]",
+            "indent": 0
+        },
+        {
+            "code": "def DFS(grid, src, dest):",
+            "indent": 0
+        },
+        {
+            "code": " ",
+            "indent": 2
+        },
+        {
+            "code": "i = src[0], j = src[1]",
+            "indent": 1
+        },
+        {
+            "code": " ",
+            "indent": 2
+        },
+        {
+            "code": "if i < 0 or i >= len(grid) or j < 0 or j <= len(grid[0]) or grid[i][j] == 0:",
+            "indent": 1
+        },
+        {
+            "code": "return",
+            "indent": 2
+        },
+        {
+            "code": " ",
+            "indent": 2
+        },
+        {
+            "code": "vis=[[False for _ in range(len(grid)] for _ in range(len(grid[0])]",
+            "indent": 1
+        },
+        {
+            "code": " ",
+            "indent": 2
+        },
+        {
+            "code": "par=[[None for _ in range(len(grid)] for _ in range(len(grid[0])]",
+            "indent": 1
+        },
+        {
+            "code": " ",
+            "indent": 2
+        },
+        {
+            "code": "stack = deque()",
+            "indent": 1
+        },
+        {
+            "code": "stack.append((src[0], src[1]))",
+            "indent": 1
+        },
+        {
+            "code": "vis[src[0]][src[1]] = True",
+            "indent": 1
+        },
+        {
+            "code": "while len(stack) != 0:",
+            "indent": 1
+        },
+        {
+            "code": "node = stack.pop()",
+            "indent": 2
+        },
+        {
+            "code": "row, col = node[0], node[1]",
+            "indent": 2
+        },
+        {
+            "code": "for k in range(4):",
+            "indent": 2
+        },
+        {
+            "code": "r, c = c1 + di[k], c2 + dj[k]",
+            "indent": 3
+        },
+        {
+            "code": " ",
+            "indent": 2
+        },
+        {
+            "code": "if r >= 0 and r < len(grid) and c >= 0 and c < len(grid[0]) and grid[r][c] == 1 and vis[r][c] == False:",
+            "indent": 3
+        },
+        {
+            "code": " ",
+            "indent": 2
+        },
+        {
+            "code": "vis[r][c] = True",
+            "indent": 4
+        },
+        {
+            "code": "par[r][c] = (row, col)",
+            "indent": 4
+        },
+        {
+            "code": "stack.append((r, c))",
+            "indent": 4
+        },
+        {
+            "code": " ",
+            "indent": 2
+        },
+        {
+            "code": "return par",
+            "indent": 1
+        }
+    ],
+    "Dijkstra": [
+        {
+            "code": "import heapq",
+            "indent": 0
+        },
+        {
+            "code": " ",
+            "indent": 2
+        },
+        {
+            "code": "# consider a grid with 0 - water 1 - land",
+            "indent": 0
+        },
+        {
+            "code": "# distance between adjacent cells - 1",
+            "indent": 0
+        },
+        {
+            "code": "def Dijkstra(grid, src, dest):",
+            "indent": 0
+        },
+        {
+            "code": " ",
+            "indent": 2
+        },
+        {
+            "code": "vis=[[False for _ in range(len(grid)] for _ in range(len(grid[0])]",
+            "indent": 1
+        },
+        {
+            "code": " ",
+            "indent": 2
+        },
+        {
+            "code": "dis=[[float('inf') for _ in range(len(grid)] for _ in range(len(grid[0])]",
+            "indent": 1
+        },
+        {
+            "code": "dis[src[0]][src[1]] = 0",
+            "indent": 1
+        },
+        {
+            "code": " ",
+            "indent": 2
+        },
+        {
+            "code": "par=[[None for _ in range(len(grid)] for _ in range(len(grid[0])]",
+            "indent": 1
+        },
+        {
+            "code": " ",
+            "indent": 2
+        },
+        {
+            "code": "mnhp = [(0, src[0], src[1])]",
+            "indent": 1
+        },
+        {
+            "code": "heapq.heapify(mnhp)",
+            "indent": 1
+        },
+        {
+            "code": "while len(mnhp) != 0:",
+            "indent": 1
+        },
+        {
+            "code": "node = heapq.heappop(mnhp)",
+            "indent": 2
+        },
+        {
+            "code": "d, row, col = node[0], node[1], node[2]",
+            "indent": 2
+        },
+        {
+            "code": "if row == dest[0] and col == dest[1]:",
+            "indent": 2
+        },
+        {
+            "code": "return par",
+            "indent": 3
+        },
+        {
+            "code": "for k in range(4):",
+            "indent": 2
+        },
+        {
+            "code": "r, c = c1 + di[k], c2 + dj[k]",
+            "indent": 3
+        },
+        {
+            "code": " ",
+            "indent": 2
+        },
+        {
+            "code": "if r >= 0 and r < len(grid) and c >= 0 and c < len(grid[0]) and grid[r][c] == 1 and vis[r][c] == False:",
+            "indent": 3
+        },
+        {
+            "code": " ",
+            "indent": 2
+        },
+        {
+            "code": "vis[r][c] = True",
+            "indent": 4
+        },
+        {
+            "code": "par[r][c] = (row, col)",
+            "indent": 4
+        },
+        {
+            "code": "heapq.heappush(mnhp, (d+1, r, c))",
+            "indent": 4
+        },
+        {
+            "code": " ",
+            "indent": 2
+        },
+        {
+            "code": "return par",
+            "indent": 1
+        }
     ]
 }
