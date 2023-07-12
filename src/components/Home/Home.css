@@ -1,0 +1,41 @@
+.home {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: -1rem;
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.welcome-message {
+    text-transform: uppercase;
+    color: #537FE7;
+    font-weight: 600;
+    font-size: 2rem;
+    line-height: 2rem;
+}
+
+.objective {
+    color: white;
+    font-size: 1.4rem;
+}
+
+.routing-cards {
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+@media screen and (max-width: 700px) {
+    .welcome-message {
+        font-size: 1.2rem;
+    }
+
+    .objective {
+        font-size: 1rem;
+    }
+}
