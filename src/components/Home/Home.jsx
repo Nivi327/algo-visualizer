@@ -26,31 +26,36 @@ const CARD_DETAILS = [
         heading: 'Sorting Algorithms',
         imgSrc: sorting,
         description: 'Sorting the array of items with required speed and acquire patterns.Set of algorithm which will be used for sorting is Bubble sort, Insertion Sort, Selection Sort, Merge sort, Quick sort.',
-        btnText: "Sorting Algo's"
+        btnText: "Sorting Algo's",
+        route: '/sorting'
     },
     {
         heading: 'Searching Algorithms',
         imgSrc: searching,
         description: 'Searching the array of items for the required search key value in the random array of different sizes. The algorithms used are Linear Search and Binary Search.',
-        btnText: "Searching Algo's"
+        btnText: "Searching Algo's",
+        route: '/searching'
     },
     {
         heading: 'PathFinding Algorithms',
         imgSrc: pathfinding,
         description: "A pathfinding algorithm seeks to find the shortest path between two points.Some of the algorithms are BFS, DFS and Dijkstra’s algorithm.",
-        btnText: "PathFinding Algo's"
+        btnText: "PathFinding Algo's",
+        route: '/path-finding'
     },
     {
         heading: 'LinkedList Operations',
         imgSrc: linkedlist,
         description: 'Linked List is a datastructure which has a lot of applications related to memory allocation. Set of operations performed are Insertion, Deletion, Updating, Reversing.',
-        btnText: "LinkedList Ops"
+        btnText: "LinkedList Ops",
+        route: '/linked-list'
     },
     {
         heading: 'Primes',
         imgSrc: primes,
         description: 'Seieve Of Eratosthenes is one of the most efficient ways of finding all primes that are less than a value n especially when the input is very large.',
-        btnText: "Seieve Of Eratosthenes"
+        btnText: "Seieve Of Eratosthenes",
+        route:'/primes'
     },
 ]
 
@@ -79,6 +84,7 @@ const Home = () => {
                 imgSrc={card.imgSrc}
                 description={card.description}
                 btnText={card.btnText}
+                route={card.route}
                 />
             })}
         </div>

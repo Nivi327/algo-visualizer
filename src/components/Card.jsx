@@ -1,10 +1,9 @@
 import React from 'react';
 import './Card.css';
 
-import Img from '../assets/home/sorting.png';
-import { Link } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 
-const Card = ({heading, imgSrc, description, btnText}) => {
+const Card = ({heading, imgSrc, description, btnText, route}) => {
     return (
         <div className="home-card">
             <h2>{heading}</h2>
@@ -13,7 +12,7 @@ const Card = ({heading, imgSrc, description, btnText}) => {
             </div>
             <div className='description btns'>
                 <p style={{margin: 0, marginLeft: '2px'}}>{description}</p> <br />
-                <Link className='btn-link' to='/sorting'>
+                <Link className='btn-link' to={route}>
                     <button>Play {btnText}</button>
                 </Link>
             </div>
