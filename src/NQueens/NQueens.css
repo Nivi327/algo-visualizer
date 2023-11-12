@@ -1,0 +1,26 @@
+:root {
+    --var-width-lappi: 800px;
+    --var-chess-brown: #964d37a8;
+    --var-chess-white: #fff;
+}
+
+.tile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.white-tile {
+    background-color: var(--var-chess-white);
+}
+
+.brown-tile {
+    background-color: var(--var-chess-brown);
+}
+
+.queen-image {
+    width: 80px;
+    height: 80px;
+    background-position: center;
+    background-repeat: no-repeat;
+}

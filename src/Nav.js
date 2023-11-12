@@ -22,6 +22,7 @@ const Nav = ({ setShowCode }) => {
                 <li><Link to='/linked-list'>LinkedList</Link></li>
                 <li><Link to='/primes'>Primes</Link></li> */}
                 <li><Link to='/'>Home</Link></li>
+                {/* <li><Link to='/n-queens'>NQueens</Link></li> */}
                 <li><Link to='/more'>More</Link></li>
                 <li>
                     <button onClick={ShowTheCode}>Check Code</button>
